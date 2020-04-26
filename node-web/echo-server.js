@@ -9,9 +9,15 @@ server.on('request', (req, res) => {
             body.push(chunk);
         })
         .on ('end', () => {
+            let weekdays = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
+            let birthDate = new Date(body.toString());
+            console.log(birthDate)
+            let birthDay = weekdays[birthDate.getDay()];
+            console.log(birthDay)
+
             res.writeHead(200, { 'Content-Type': 'text/plain' });
-            body = Buffer.concat(body).toString();
-            res.end(body);
+            //body = Buffer.concat(body).toString();
+            res.end(birthDay);
         })
 
     } else {
