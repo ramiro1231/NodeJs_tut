@@ -1,0 +1,9 @@
+Con Node podremos 
+interactuar directamente con
+ el sistema operativo gracias a su modulo os, (operative system).
+Gracias a este 
+modulo podremos conocer las diferentes características de nuestro sistema o del sistema donde esta en uso, para poder ejecutar acciones según esta.
+Por ejemplo
+, la cantidad de cpus que tiene, o la capacidad de memoria libre que tiene actualmente.
+También con Node podremos manipular los directorios y archivos de nuestro sistema, con el módulo fs, (File System). Con este módulo podremos hacer prácticamente todas las acciones que nosotros podemos hacer en nuestro directorio, crear, editar y/o eliminar archivos o carpetas enteras.
+Es importante tener en cuenta que la mayoría de los métodos de estos módulos suelen ser asíncronos, ya que Node siempre trata de ser así, pero Node también nos ofrece su versión síncrona por si lo llegamos a requerir.
