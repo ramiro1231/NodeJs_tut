@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-
+app.enable('strict routing')
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies.js');
 

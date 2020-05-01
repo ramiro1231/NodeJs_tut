@@ -1,6 +1,6 @@
 const express = require('express');
 const MoviesService = require('../services/movies');
-
+const slash   = require('express-slash');
 const {
     movieIdSchema,
     createMoviesSchema,
@@ -10,9 +10,12 @@ const {
 const validationHandler = require('../util/middleware/validationHandler');
 
 function moviesApi(app) {
-    const router = express.Router();
+    const router = express.Router({
+        caseSensitive: app.get('case sensitive routing'),
+        strict: app.get('strict routing')
+    });
     app.use("/api/movies", router);
-
+    app.use(slash());
     const moviesService = new MoviesService();
     router.get('/', async function (req, res, next) {
         const { tags } = req.query;
