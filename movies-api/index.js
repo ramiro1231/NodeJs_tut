@@ -1,18 +1,22 @@
 const express = require('express');
+
 const app = express();
 
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies.js');
 
-const { logErrors, errorHandler} = require('./util/middleware/errorHandlers')
-
+const { logErrors, wrapErrors, errorHandler } = require('./util/middleware/errorHandlers');
+const notFoundHandler = require('./util/middleware/notFoundHandler.js');
 //body parser
 app.use(express.json());
 
 moviesApi(app);
 
-
+//Cath 404
+app.use(notFoundHandler);
+//Errores middleware
 app.use(logErrors);
+app.use(wrapErrors);
 app.use(errorHandler);
 
 app.listen(config.port, function () {
